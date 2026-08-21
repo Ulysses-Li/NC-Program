@@ -115,8 +115,9 @@ test('tapered G-code contains compensation and no invalid values', () => {
     assert.match(output, /G42/);
     assert.match(output, /G02/);
     assert.match(output, /G40/);
-    // 用意：錐牙進入 G01 模式時必須立即指定目前的進給值。
-    assert.match(output, /G90 G01 F500\.0/);
+    // 用意：錐牙進刀使用 2.5 倍進給，首段 G02 再切回原始加工進給。
+    assert.match(output, /G90 G01 F1250\.0/);
+    assert.match(output, /G02 X[^\n]+ J-[^\n]+ F500\.0/);
     assert.doesNotMatch(output, /NaN|undefined|Infinity/);
 });
 

@@ -5,6 +5,7 @@
 ## 資料夾用途
 
 - `Thread_Milling/`：Thread Milling 專屬頁面、資料、運算程式、樣式與測試。
+- `NC_Helix/`：NC Helix Drill 專屬頁面、資料、運算程式、樣式與測試。
 - `index.html`：相容舊網址的入口頁，目前會導向 Thread Milling。
 - `header/`：所有 NC Program 頁面共用的頁首元件與樣式。
 - `footer/`：所有 NC Program 頁面共用的頁尾元件與樣式。
@@ -20,6 +21,16 @@
 - `Thread_Milling/src/state/`：表單狀態整理。
 - `Thread_Milling/src/ui/`：畫面事件與選單更新。
 - `Thread_Milling/tests/`：自動測試。
+
+## NC Helix 修改位置
+
+- `NC_Helix/index.html`：欄位與頁面結構。
+- `NC_Helix/styles/main.css`：NC Helix 專屬畫面樣式。
+- `NC_Helix/src/data/`：刀具與加工限制資料。
+- `NC_Helix/src/services/`：切削參數、進給、G-code 與匯出邏輯。
+- `NC_Helix/src/state/`：不同加工模式的欄位狀態。
+- `NC_Helix/src/ui/`：畫面事件、模式、多語系與提示功能。
+- `NC_Helix/tests/`：自動測試。
 
 ## 新增其他 NC Program
 
