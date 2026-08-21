@@ -16,7 +16,15 @@ const contentTypes = {
 const server = http.createServer(async (request, response) => {
     try {
         const url = new URL(request.url, `http://${host}:${port}`);
-        const requestPath = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname.slice(1));
+
+        // 用意：目前預設入口是 Thread Milling；之後新增總覽頁時，只需調整這個轉址。
+        if (url.pathname === '/' || url.pathname === '/index.html') {
+            response.writeHead(302, { Location: '/Thread_Milling/index.html' });
+            response.end();
+            return;
+        }
+
+        const requestPath = decodeURIComponent(url.pathname.slice(1));
         const filePath = path.resolve(root, requestPath);
 
         if (!filePath.startsWith(root)) {

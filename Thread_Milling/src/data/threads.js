@@ -8,7 +8,7 @@ window.NCProgram = window.NCProgram || {};
 const P_tpi = tpi => Number((25.4 / tpi).toFixed(3));
 
 const threadData = {
-            //60° Parallel Thread: such as UNC.
+            // 用意：60° 平行牙規格，例如 UNC。
             "UNC 1/4-20": { ThreadType: "UNC", MajorDiameter: 6.35, Pitch: 1.27, TapDrillDiameter: 5.1 },
             "UNC 5/16-18": { ThreadType: "UNC", MajorDiameter: 7.938, Pitch: 1.411, TapDrillDiameter: 6.6 },
             "UNC 3/8-16": { ThreadType: "UNC", MajorDiameter: 9.525, Pitch: 1.588, TapDrillDiameter: 8.0 },
@@ -16,7 +16,7 @@ const threadData = {
             "UNC 1/2-13": { ThreadType: "UNC", MajorDiameter: 12.7, Pitch: 1.954, TapDrillDiameter: 10.8 },
             "UNC 9/16-12": { ThreadType: "UNC", MajorDiameter: 14.288, Pitch: 2.117, TapDrillDiameter: 12.2 },
 
-            // PT / NPT
+            // 用意：PT／NPT 錐牙規格。
             "PT 1/4": { MajorDiameter: 13.157, Pitch: P_tpi(19), TapDrillDiameter: 11.113, DepthOfCut: 9.4 },   // PT 牙
             "PT 3/8": { MajorDiameter: 16.662, Pitch: P_tpi(19), TapDrillDiameter: 14.684, DepthOfCut: 9.7 },
             "PT 1/2": { MajorDiameter: 20.955, Pitch: P_tpi(14), TapDrillDiameter: 18.256, DepthOfCut: 12.7 },
@@ -29,7 +29,7 @@ const threadData = {
             "NPT 1/2": { MajorDiameter: 21.336, Pitch: P_tpi(14), TapDrillDiameter: 17.859, DepthOfCut: 12 },
             "NPT 3/4": { MajorDiameter: 26.67, Pitch: P_tpi(14), TapDrillDiameter: 23.019, DepthOfCut: 12 },
 
-            // G (BSPP) subset
+            // 用意：G（BSPP）平行管牙規格子集。
             "G (PF) 1/16": { MajorDiameter: 7.723, Pitch: 0.907, TapDrillDiameter: 6.8 },
             "G (PF) 1/8": { MajorDiameter: 9.728, Pitch: 0.907, TapDrillDiameter: 8.7 },
             "G (PF) 1/4": { MajorDiameter: 13.157, Pitch: 1.337, TapDrillDiameter: 11.7 },
@@ -39,7 +39,7 @@ const threadData = {
             "G (PF) 3/4": { MajorDiameter: 26.441, Pitch: 1.814, TapDrillDiameter: 24.4 },
             "G (PF) 7/8": { MajorDiameter: 30.201, Pitch: 1.814, TapDrillDiameter: 28.1 },
 
-            // Metric Coarse（粗牙）
+            // 用意：公制粗牙規格。
             "M 6 x 1.0": { ThreadType: "Coarse", MajorDiameter: 6, Pitch: 1.0, TapDrillDiameter: 5 },
             "M 7 x 1.0": { ThreadType: "Coarse", MajorDiameter: 7, Pitch: 1.0, TapDrillDiameter: 6 },
             "M 8 x 1.25": { ThreadType: "Coarse", MajorDiameter: 8, Pitch: 1.25, TapDrillDiameter: 6.8 },
@@ -50,7 +50,7 @@ const threadData = {
             "M 14 x 2.0": { ThreadType: "Coarse", MajorDiameter: 14, Pitch: 2.0, TapDrillDiameter: 12 },
             "M 16 x 2.0": { ThreadType: "Coarse", MajorDiameter: 16, Pitch: 2.0, TapDrillDiameter: 14 },
 
-            // Metric Fine（細牙；你的資料維持用 MF 前綴）
+            // 用意：公制細牙規格；資料鍵維持使用 MF 前綴。
             "MF 6 x 0.75": { ThreadType: "Fine", MajorDiameter: 6, Pitch: 0.75, TapDrillDiameter: 5.3 },
             "MF 7 x 0.75": { ThreadType: "Fine", MajorDiameter: 7, Pitch: 0.75, TapDrillDiameter: 6.3 },
             "MF 8 x 0.75": { ThreadType: "Fine", MajorDiameter: 8, Pitch: 0.75, TapDrillDiameter: 7.3 },
@@ -133,7 +133,7 @@ const threadData = {
             "MF 76 x 2.0": { ThreadType: "Fine", MajorDiameter: 76, Pitch: 2.0, TapDrillDiameter: 74 },
             "MF 80 x 2.0": { ThreadType: "Fine", MajorDiameter: 80, Pitch: 2.0, TapDrillDiameter: 78 },
 
-            // UNC/UNF/UNEF
+            // 用意：美制 UNC／UNF／UNEF 規格。
 
 
             "UNF 1/4-28": { ThreadType: "UNF", MajorDiameter: 6.35, Pitch: 0.907, TapDrillDiameter: 5.5 },
@@ -171,7 +171,7 @@ const threadData = {
             "UNEF 1 5/8-18": { ThreadType: "UNEF", MajorDiameter: 41.275, Pitch: 1.411, TapDrillDiameter: 39.9 },
             "UNEF 1 11/16-18": { ThreadType: "UNEF", MajorDiameter: 42.862, Pitch: 1.411, TapDrillDiameter: 41.5 },
 
-            // ----- Heli-Coil Overrides（修正你原本的 HC-M* → HC M*；刪除重複鍵）-----
+            // 用意：覆寫 Heli-Coil 規格，統一使用「HC M*」資料鍵並避免重複鍵。
             "HC M5 x 0.8": { ThreadType: "HC", MajorDiameter: 6.04, Pitch: 0.8, TapDrillDiameter: 5.3 },  // HC 專用外徑/導孔
             "HC M6 x 1.0": { ThreadType: "HC", MajorDiameter: 7.3, Pitch: 1.0, TapDrillDiameter: 6.3 },
             "HC M7 x 1.0": { ThreadType: "HC", MajorDiameter: 8.3, Pitch: 1.0, TapDrillDiameter: 7.3 },

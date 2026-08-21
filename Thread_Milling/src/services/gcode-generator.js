@@ -65,7 +65,7 @@ function generateGCode(input) {
     return output;
 }
 
-// Tapered: 保留原本 PT/NPT 的 G42 + G02 刀路邏輯，只把 DOM 依賴改成參數。
+// 用意：錐牙保留 PT／NPT 的 G42 + G02 刀路邏輯，並以參數取代 DOM 依賴。
 function generateTaperedGCode({ Xc, Yc, Zsafe, Zsurf, feed, toolDia, OD, pitch, tapDrill, depth, toolNo, passPercents }) {
     const out = [];
     const P = pitch;
@@ -100,7 +100,7 @@ function generateTaperedGCode({ Xc, Yc, Zsafe, Zsurf, feed, toolDia, OD, pitch, 
             const X = (Xc + xOff).toFixed(3);
             const Y = (Yc + yOff).toFixed(3);
             const Z = (Zsurf + zOff).toFixed(3);
-            // Tapered 的螺旋切削第一段一定要給 F 值；後續同一段路徑沿用控制器上一個進給。
+            // 用意：錐牙螺旋切削第一段指定 F 值，後續同一路徑沿用控制器上一個進給。
             const feedCommand = firstFeed ? ` F${feed.toFixed(1)}` : '';
             out.push(`G02 X${X} Y${Y} Z${Z} R${RNow.toFixed(3)}${feedCommand}`);
             firstFeed = false;
@@ -117,7 +117,7 @@ function generateTaperedGCode({ Xc, Yc, Zsafe, Zsurf, feed, toolDia, OD, pitch, 
     return out;
 }
 
-// Parallel: 保留原本平行牙 G41 + G03 螺旋路徑，只把 pass 與 toolNo 改成外部參數。
+// 用意：平行牙保留 G41 + G03 螺旋路徑，並將 pass 與 toolNo 改為外部參數。
 function generateParallelGCode({ Xc, Yc, Zsafe, Zsurf, feed, toolDia, OD, pitch, tapDrill, depth, toolNo, passPercents }) {
     const out = [];
     const turns = Math.ceil(depth / pitch);
