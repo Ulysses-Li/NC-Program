@@ -5,12 +5,13 @@
     --home-muted: #5f6368;
     --home-line: #d9d9d6;
     --home-surface: #fff;
-    --home-background: #f4f4f1;
+    --home-background: #efefef;
 }
 
 /* 用意：限制首頁樣式作用範圍，避免影響其他 NC Program 頁面。 */
 .nc-home { margin: 0; color: var(--home-ink); background: var(--home-background); font-family: Arial, "Microsoft JhengHei", sans-serif; }
-.home-main { background: radial-gradient(circle at 85% 5%, rgba(244, 91, 31, .08), transparent 28rem), var(--home-background); }
+/* 用意：使用一致的中性淺灰背景，避免暖色漸層造成頁面色偏。 */
+.home-main { background: var(--home-background); }
 .home-intro { padding: 58px 0 42px; }
 .home-intro .container, .program-section .container, .category-section .container { max-width: 1320px; }
 .eyebrow, .section-kicker { color: var(--home-orange-dark); font-size: .78rem; font-weight: 800; letter-spacing: .14em; }
@@ -34,7 +35,7 @@
 .program-card:hover .program-link, .program-card:focus-visible .program-link { color: #fff; background: var(--home-ink); }
 
 /* 用意：未開放分類使用較輕量的卡片，避免與可操作程式混淆。 */
-.category-card { min-height: 380px; height: 100%; padding: 28px; display: flex; flex-direction: column; align-items: flex-start; background: rgba(255, 255, 255, .78); border: 1px solid var(--home-line); border-radius: 10px; }
+.category-card { min-height: 380px; height: 100%; padding: 28px; display: flex; flex-direction: column; align-items: flex-start; background: var(--home-surface); border: 1px solid var(--home-line); border-radius: 10px; }
 .category-card .method-icon { width: 64px; height: 64px; margin-bottom: 21px; font-size: 1.55rem; }
 .category-card h3 { margin: 0 0 10px; font-size: 1.75rem; font-weight: 800; line-height: 1.12; }
 .category-card p { margin-bottom: 22px; color: #55595e; font-size: 1.02rem; line-height: 1.55; }
