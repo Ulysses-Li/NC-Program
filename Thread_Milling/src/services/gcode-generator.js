@@ -82,7 +82,8 @@ function generateTaperedGCode({ Xc, Yc, Zsafe, Zsurf, feed, toolDia, OD, pitch, 
         const percent = passPercents[i];
         const RBase = RStart + (RFinish - RStart) * (percent / 100);
         const REntry = RBase + (P / 32) * 1.5;
-        out.push('G90 G01 ');
+        // 用意：進入 G01 模式時同步指定切削進給，避免沿用控制器先前的 F 值。
+        out.push(`G90 G01 F${feed.toFixed(1)}`);
         out.push(`G42 D${toolNo} X${(Xc + REntry / 2).toFixed(3)} Y${(Yc + REntry / 2).toFixed(3)} Z${(Zsurf + liftZ).toFixed(3)}`);
         out.push(`G02 X${(Xc + REntry).toFixed(3)} Y${(Yc + 0).toFixed(3)} J-${(REntry / 2).toFixed(3)}`);
 
