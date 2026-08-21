@@ -79,10 +79,6 @@
           'form.results.machiningTime': 'Estimated Machining Time: {time} sec'
         }
 
-       
-
-
-
       };
 
 
